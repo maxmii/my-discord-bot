@@ -1,7 +1,8 @@
-const { Discord, GatewayIntentBits } = require('discord.js')
+const { Client, GatewayIntentBits } = require('discord.js')
 const fetch = require('node-fetch')
-const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds] })
+const client = new Client({ intents: [GatewayIntentBits.Guilds] })
 const token = process.env.TOKEN
+require('dotenv').config()
 
 const getQuote = () => {
   return fetch('https://zenquotes.io/api/random')
@@ -30,12 +31,13 @@ client.on('message', (msg) => {
     getQuote().then((quote) => msg.channel.send(quote))
   }
 
-  if (sadWords.some(word => msg.content.incudes(word.toLowerCase()))) {
-    const encouragement = encouragements[Math.floor(Math.random() * encouragements.length)]
+  if (sadWords.some((word) => msg.content.incudes(word.toLowerCase()))) {
+    const encouragement =
+      encouragements[Math.floor(Math.random() * encouragements.length)]
     msg.reply(encouragement)
   }
 })
 
 //Login to discord with your clients token
 console.log(token)
-// client.login(token)
+client.login(token)

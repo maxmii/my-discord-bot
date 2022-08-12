@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +21,7 @@
   "dependencies": {
     "discord.js": "^14.2.0",
     "dotenv": "^16.0.1",
-    "node-fetch": "^3.2.10",
+    "node-fetch": "^2.6.6",
     "utf-8-validate": "^5.0.9"
   },
   "devDependencies": {
