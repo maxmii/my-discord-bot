@@ -27,11 +27,10 @@ client.on('ready', () => {
 client.on('message', (msg) => {
   if (msg.author.bot) return
 
-  if (msg.content === '$inspire') {
+  if (msg.content === 'inspire') {
     getQuote().then((quote) => msg.channel.send(quote))
   }
-
-  if (sadWords.some((word) => msg.content.incudes(word.toLowerCase()))) {
+  if (sadWords.some((word) => msg.content.toLowerCase().includes(word))) {
     const encouragement =
       encouragements[Math.floor(Math.random() * encouragements.length)]
     msg.reply(encouragement)
