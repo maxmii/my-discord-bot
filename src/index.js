@@ -1,6 +1,6 @@
-const { Client, GatewayIntentBits } = require('discord.js')
+const { Client } = require('discord.js')
 const fetch = require('node-fetch')
-const client = new Client({ intents: [GatewayIntentBits.Guilds] })
+const client = new Client()
 const token = process.env.TOKEN
 require('dotenv').config()
 
