@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/maxmii/my-discord-bot#readme",
   "dependencies": {
+    "@replit/database": "^2.0.2",
     "discord.js": "^14.2.0",
     "dotenv": "^16.0.1",
     "node-fetch": "^2.6.6",
