@@ -10,7 +10,7 @@ const getQuote = () => {
       return res.json()
     })
     .then((data) => {
-      return `${data[0].q} - ${data[0].q}`
+      return `${data[0].q} - ${data[0].a}`
     })
 }
 
@@ -26,11 +26,12 @@ client.on('ready', () => {
 
 client.on('message', (msg) => {
   if (msg.author.bot) return
+  const msgContent = msg.content.trim().toLowerCase()
 
-  if (msg.content === 'inspire') {
+  if (msgContent === '$inspire') {
     getQuote().then((quote) => msg.channel.send(quote))
   }
-  if (sadWords.some((word) => msg.content.toLowerCase().includes(word))) {
+  if (sadWords.some((word) => msgContent.includes(word))) {
     const encouragement =
       encouragements[Math.floor(Math.random() * encouragements.length)]
     msg.reply(encouragement)
@@ -38,5 +39,4 @@ client.on('message', (msg) => {
 })
 
 //Login to discord with your clients token
-console.log(token)
 client.login(token)
